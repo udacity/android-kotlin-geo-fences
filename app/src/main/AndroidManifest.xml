@@ -35,7 +35,8 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".HuntMainActivity"
-            android:label="@string/title_activity_hunt"
+          android:exported="true"
+          android:label="@string/title_activity_hunt"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
