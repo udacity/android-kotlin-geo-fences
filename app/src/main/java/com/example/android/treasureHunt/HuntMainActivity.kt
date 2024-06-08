@@ -69,7 +69,7 @@ class HuntMainActivity : AppCompatActivity() {
         intent.action = ACTION_GEOFENCE_EVENT
         // Use FLAG_UPDATE_CURRENT so that you get the same pending intent back when calling
         // addGeofences() and removeGeofences().
-        PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -315,11 +315,11 @@ class HuntMainActivity : AppCompatActivity() {
             .build()
 
         // First, remove any existing geofences that use our pending intent
-        geofencingClient.removeGeofences(geofencePendingIntent)?.run {
+        geofencingClient.removeGeofences(geofencePendingIntent).run {
             // Regardless of success/failure of the removal, add the new geofence
             addOnCompleteListener {
                 // Add the new geofence request with the new geofence
-                geofencingClient.addGeofences(geofencingRequest, geofencePendingIntent)?.run {
+                geofencingClient.addGeofences(geofencingRequest, geofencePendingIntent).run {
                     addOnSuccessListener {
                         // Geofences added.
                         Toast.makeText(this@HuntMainActivity, R.string.geofences_added,
@@ -335,7 +335,7 @@ class HuntMainActivity : AppCompatActivity() {
                         Toast.makeText(this@HuntMainActivity, R.string.geofences_not_added,
                             Toast.LENGTH_SHORT).show()
                         if ((it.message != null)) {
-                            Log.w(TAG, it.message)
+                            Log.w(TAG, it.message!!)
                         }
                     }
                 }
@@ -351,7 +351,7 @@ class HuntMainActivity : AppCompatActivity() {
         if (!foregroundAndBackgroundLocationPermissionApproved()) {
             return
         }
-        geofencingClient.removeGeofences(geofencePendingIntent)?.run {
+        geofencingClient.removeGeofences(geofencePendingIntent).run {
             addOnSuccessListener {
                 // Geofences removed
                 Log.d(TAG, getString(R.string.geofences_removed))

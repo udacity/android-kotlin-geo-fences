@@ -18,6 +18,8 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdk 34
@@ -38,6 +40,7 @@ android {
 
     buildFeatures {
         dataBinding true
+        buildConfig true
     }
 
     namespace = "com.example.android.treasureHunt"
