@@ -24,8 +24,10 @@ Pre-requisites
 
 Getting Started
 ---------------
-1. Download and run the app.
-2. If you are running API 29 or higher, grant the "Always allow" permission; otherwisa, grant "Allow" for location permissions.
+1. Android Studio (Jellyfish or above)
+2. JDK 21 with `JAVA_HOME` environment variable set. If you don't have JDK 21 installed or `JAVA_HOME` is not set, consider using a tool like `sdkman` to simplify the process. Refer to the sdkman documentation for installation instructions: [sdkman installation](https://sdkman.io/install)
+3. Download and run the app. 
+4. If you are running API 29 or higher, grant the "Always allow" permission; otherwise, grant "Allow" for location permissions.
 
 Note: If you are running this app on an emulator, you will need to use another app to pull location data from.
 This is because geofencing relies on device sensors to detect the location of the device, which the emulator cannot access.

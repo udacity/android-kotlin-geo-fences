@@ -72,7 +72,6 @@ fun NotificationManager.sendGeofenceEnteredNotification(context: Context, foundI
     )
     val bigPicStyle = NotificationCompat.BigPictureStyle()
         .bigPicture(mapImage)
-        .bigLargeIcon(null)
 
     // We use the name resource ID from the LANDMARK_DATA along with content_text to create
     // a custom message when a Geofence triggers.
